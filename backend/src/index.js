@@ -5,7 +5,7 @@ const mongoose = require("mongoose");
 
 const app = express();
 
-mongoose.connect('mongodb+srv://developer_omnistack:p1ssw0rd@cluster0-d2qp3.gcp.mongodb.net/omni10?retryWrites=true&w=majority', {
+mongoose.connect('[mongodb-atlas-svr-url]', {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 });
