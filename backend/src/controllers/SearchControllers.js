@@ -5,6 +5,10 @@ module.exports = {
     async index(request, response) {
 
         const { latitude, longitude, techs } = request.query;
+        
+        if(!latitude || !longitude || !techs)
+            return response.status(403).json({message: "Invalid fields"});
+
         const techsLinted = parseStringAsArray(techs);
 
         let devs = await Dev.find({
