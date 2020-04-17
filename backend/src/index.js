@@ -22,6 +22,6 @@ app.use(express.json());
 app.use(routes);
 
 
-app.listen(3333, () => {
-    console.log("Omni10 running on", 3333);
+server.listen(3333, () => {
+    console.log("DeveloperRadar running on", 3333);
 });
