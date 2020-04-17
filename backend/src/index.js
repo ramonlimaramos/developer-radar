@@ -1,9 +1,15 @@
+const http = require("http");
 const express = require("express");
 const cors = require("cors");
-const routes = require("./routes");
 const mongoose = require("mongoose");
 
+const { setupWebSocket } = require("./websocket");
+const routes = require("./routes");
+
 const app = express();
+const server = http.Server(app);
+
+setupWebSocket(server);
 
 mongoose.connect('[mongodb-atlas-svr-url]', {
     useNewUrlParser: true,
@@ -16,6 +22,6 @@ app.use(express.json());
 app.use(routes);
 
 
-app.listen(3333, () => {
-    console.log("Omni10 running on", 3333);
+server.listen(3333, () => {
+    console.log("DeveloperRadar running on", 3333);
 });
