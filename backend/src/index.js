@@ -1,4 +1,9 @@
+require('dotenv').config({
+    path: process.env.NODE_ENV == "test" ? ".env.test" : ".env"
+});
+
 const http = require("http");
+
 const express = require("express");
 const cors = require("cors");
 const mongoose = require("mongoose");
@@ -11,7 +16,7 @@ const server = http.Server(app);
 
 setupWebSocket(server);
 
-mongoose.connect('[mongodb-atlas-svr-url]', {
+mongoose.connect(process.env.MONGODB_ATLAS_SVR_URL, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
 });
@@ -22,6 +27,6 @@ app.use(express.json());
 app.use(routes);
 
 
-server.listen(3333, () => {
-    console.log("DeveloperRadar running on", 3333);
+server.listen(process.env.PORT, () => {
+    console.log("DeveloperRadar running on", process.env.PORT);
 });

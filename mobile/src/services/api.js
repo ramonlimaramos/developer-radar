@@ -1,7 +1,8 @@
-import axios from 'axios'
+import { baseURL } from '../../env';
+import axios from 'axios';
 
 const api = axios.create({
-    baseURL: '[backend_url_and_port]',
+    baseURL
 });
 
 export default api;
